@@ -1,0 +1,99 @@
+@import 'tailwindcss';
+@import 'leaflet/dist/leaflet.css';
+
+:root {
+  --vs-bg: #f3f4f6;
+  --vs-panel: #ffffff;
+  --vs-ink: #0f172a;
+  --vs-muted: #64748b;
+  --vs-line: #e5e7eb;
+  --vs-green: #16a34a;
+  --vs-green-soft: #dcfce7;
+  --vs-amber: #d97706;
+  --vs-amber-soft: #fef3c7;
+  --vs-red: #dc2626;
+  --vs-red-soft: #fee2e2;
+  --vs-sidebar: #ffffff;
+  --font-sans: 'IBM Plex Sans', 'Segoe UI', Tahoma, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--vs-ink);
+  background: var(--vs-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+/* Leaflet tweaks for light enterprise map */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: #e8eaed;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px !important;
+  background: rgba(255, 255, 255, 0.75) !important;
+}
+
+.vs-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.vs-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+@keyframes vs-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vs-pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.vs-fade-up {
+  animation: vs-fade-up 0.35s ease-out both;
+}
+
+.vs-marker-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  border: 2px solid currentColor;
+  animation: vs-pulse-ring 1.8s ease-out infinite;
+}
